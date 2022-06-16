@@ -10,8 +10,15 @@ class NoteServivce {
       return error.message;
     }
   }
+
   async fetch(data) {
     const notes = await Note.find({});
     return notes;
+  }
+
+  async fetchById(id) {
+    const note = await Note.findById(id);
+    return note;
+  }
 }
 export default new NoteServivce();

@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import NoteService from '../services/note.service';
+import NoteService from '../services/note.service.js';
 
 class NoteController {
   async create(req, res) {
@@ -16,7 +16,7 @@ class NoteController {
 
   async find(req, res) {
     const data = await NoteService.fetch();
-    return res.staatus(201).send({ status: true, body: data });
+    return res.status(201).send({ status: true, body: data });
   }
 
   async findById(req, res) {
