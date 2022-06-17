@@ -12,7 +12,7 @@ class NoteServivce {
   }
 
   async fetch(data) {
-    const notes = await Note.find({});
+    const notes = await Note.find({ data });
     return notes;
   }
 
@@ -20,5 +20,16 @@ class NoteServivce {
     const note = await Note.findById(id);
     return note;
   }
+
+  async delete(id) {
+    const notee = await Note.findByIdAndDelete(id);
+    return notee;
+  }
+
+  async update(id) {
+    const note = await Note.findByIdAndUpdate(id);
+    return note;
+  }
 }
+
 export default new NoteServivce();
