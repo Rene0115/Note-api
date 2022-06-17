@@ -26,8 +26,8 @@ class NoteServivce {
     return notee;
   }
 
-  async update(id) {
-    const note = await Note.findByIdAndUpdate(id);
+  async update(id, data) {
+    const note = await Note.findByIdAndUpdate(id, data);
     return note;
   }
 }
