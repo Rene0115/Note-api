@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable import/extensions */
 import { User } from '../models/user.model.js';
 
 class UserService {
