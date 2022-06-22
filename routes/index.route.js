@@ -6,6 +6,6 @@ import userRoute from './user.route.js';
 const router = express.Router();
 
 router.use('/notes', noteRoute);
-router.post('/', userRoute);
+router.use('/user', userRoute);
 
 export default router;
