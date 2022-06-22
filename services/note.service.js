@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable class-methods-use-this */
 import { Note } from '../models/notes.model.js';
 
