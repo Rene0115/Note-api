@@ -7,7 +7,7 @@ const userSignup = mongoose.Schema({
         minlength: 5
     }
     email: {
-    type: String,
+    type: 'String' ,
     required: true,
     minlength: 10
   },
