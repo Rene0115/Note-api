@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import express from 'express';
 import noteConrtroller from '../controllers/note.conrtroller.js';
 
