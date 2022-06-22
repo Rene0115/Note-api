@@ -1,6 +1,6 @@
 class UserController {
   async create(req, res) {
-    return await res.send('attempted to create');
+    return res.send('attempted to create');
   }
 }
 

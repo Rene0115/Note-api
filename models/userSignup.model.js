@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
 
 const userSignup = mongoose.Schema({
-    Username: {
-        type: 'String',
-        required: true,
-        minlength: 5
-    }
-    Email: {
-    type: 'String' ,
+
+  Email: {
+    type: 'String',
     required: true,
-    minlength: 10
+    minlength: 16
   },
   password: {
     type: 'String',

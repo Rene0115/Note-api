@@ -1,9 +1,11 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
 import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
 import router from '../routes/index.route.js';
 import database from '../config/database.config.js';
 import errorMiddleware from './error.middleware.js';
-import morgan from 'morgan';
-import cors from 'cors';
 
 const middleware = (app) => {
   database();

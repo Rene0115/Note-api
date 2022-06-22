@@ -8,4 +8,5 @@ noteRoute.get('/', noteConrtroller.find);
 noteRoute.get('/:id', noteConrtroller.findById);
 noteRoute.delete('/:id', noteConrtroller.delete);
 noteRoute.put('/:id', noteConrtroller.update);
+
 export default noteRoute;

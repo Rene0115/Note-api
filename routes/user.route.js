@@ -1,8 +1,12 @@
+/* eslint-disable import/extensions */
 import express from 'express';
- 
-const userRoute = express.Router()
+import userController from '../controllers/user.controller.js';
+
+const userRoute = express.Router();
 userRoute.post('/', userController.create);
-userRoute.get('/', nuserControllerfind);
-userRoute.get('/:id',userControllerer.findById);
-userRoute.delete('/',userControlleroller.delete);
-userRoute.put('/:id',userControllerer.update);
+userRoute.get('/', userController.find);
+userRoute.get('/:id', userController.findById);
+userRoute.delete('/', userController.delete);
+userRoute.put('/:id', userController.update);
+
+export default userRoute;
