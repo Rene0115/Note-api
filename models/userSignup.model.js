@@ -6,13 +6,13 @@ const userSignup = mongoose.Schema({
         required: true,
         minlength: 5
     }
-    email: {
+    Email: {
     type: 'String' ,
     required: true,
     minlength: 10
   },
   password: {
-    type: String,
+    type: 'String',
     required: true,
     minlength: 8
   }
