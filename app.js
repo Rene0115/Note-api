@@ -27,13 +27,15 @@ app.get('/Register', (req, res) => {
 
 app.post('/Register', (req, res) => {
   const newUser = new User({
-    Email: req.body.username,
-    password: require.body.password
+    email: req.body.email,
+    password: req.body.password
   });
 
   newUser.save((err) => {
     if (err) {
       logger.info(err);
+    } else {
+      res.status(200).send('Success');
     }
   });
 });
