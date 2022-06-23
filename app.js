@@ -26,9 +26,11 @@ app.post('/Register', (req, res) => {
   newUser.save((err) => {
     if (err) {
       logger.info(err);
-    } else {
-      res.status(200).send('Success');
+      return res.status(400).send({
+        message: err.message
+      });
     }
+    res.status(200).send('Success');
   });
 });
 
