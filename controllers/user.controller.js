@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable consistent-return */
 /* eslint-disable class-methods-use-this */
 import UserService from '../services/user.service.js';
