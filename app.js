@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import pino from 'pino';
 import middleware from './middlewares/index.middlewares.js';
 import 'express-async-errors';
+import { User } from './models/user.model.js';
 
 export const logger = pino();
 
@@ -16,8 +17,42 @@ const app = express();
 middleware(app);
 const PORT = process.env.PORT || 3000;
 
+app.get('/login', (req, res) => {
+  res.render('Form.js');
+});
+
+app.get('/Register', (req, res) => {
+  res.render('register');
+});
+
+app.post('/Register', (req, res) => {
+  const newUser = new User({
+    Email: req.body.username,
+    password: require.body.password
+  });
+
+  newUser.save((err) => {
+    if (err) {
+      logger.info(err);
+    }
+  });
+});
+
+app.post('/login', (req, res) => {
+  const { username } = req.body;
+  const { password } = req.body;
+
+  User.findOne({ email: username }, (err, foundUser) => {
+    if (err) {
+      logger.info(err);
+    } else if (foundUser) {
+      if (foundUser.password === password) {
+        res.status(200).send('Authentication successful');
+      }
+    }
+  });
+});
+
 app.listen(PORT, () => {
   logger.info(`Server is running on port  ${PORT}`);
 });
-
-export default app;
