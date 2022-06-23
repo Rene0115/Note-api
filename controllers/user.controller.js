@@ -5,6 +5,7 @@ import UserService from '../services/user.service.js';
 
 class UserController {
   async create(req, res) {
+    return res.send(req.body);
     const data = { Email: req.body.Email, password: req.body.password };
     const newUser = await UserService.create(data);
     if (typeof (newUser) === 'string') {

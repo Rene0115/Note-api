@@ -17,14 +17,6 @@ const app = express();
 middleware(app);
 const PORT = process.env.PORT || 3000;
 
-app.get('/login', (req, res) => {
-  res.render('Form.js');
-});
-
-app.get('/Register', (req, res) => {
-  res.render('register');
-});
-
 app.post('/Register', (req, res) => {
   const newUser = new User({
     email: req.body.email,
