@@ -1,13 +1,15 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 /* eslint-disable consistent-return */
 /* eslint-disable class-methods-use-this */
 import _ from 'lodash';
 import UserService from '../services/user.service.js';
+import md5 from 'md5';
 
 class UserController {
   async create(req, res) {
     // return res.send(req.body);
-    const data = { email: req.body.email, password: req.body.password };
+    const data = { email: req.body.email, password: md5(req.body.password) };
     const user = await UserService.findByEmail(req.body.email);
 
     if (!_.isEmpty(user)) {
@@ -18,7 +20,7 @@ class UserController {
     }
     const newUser = await UserService.create(data);
 
-    const token = 'tokens'
+    // const token = 'tokens';
 
     return res.status(201).send({
       success: true,

@@ -1,6 +1,7 @@
+/* eslint-disable import/no-cycle */
 import mongoose from 'mongoose';
 
-const user = mongoose.Schema({
+const user = new mongoose.Schema({
 
   email: {
     type: 'String',
