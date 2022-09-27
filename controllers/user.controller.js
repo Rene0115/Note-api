@@ -4,6 +4,7 @@
 /* eslint-disable class-methods-use-this */
 import _ from 'lodash';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import userService from '../services/user.service.js';
 
 class UserController {
@@ -39,7 +40,7 @@ class UserController {
         message: 'User not found'
       });
     }
-    console.log(req.body.password, user.password);
+
     const verifyPassword = bcrypt.compareSync(req.body.password, user.password);
     if (!verifyPassword) {
       return res.status(404).send({
@@ -47,15 +48,15 @@ class UserController {
         message: 'email or password is invalid'
       });
     }
-
-    // generate auth token
-    // const token = 'token';
-
-    // return res.header('token', token).status(200).send({
-    //   success: true,
-    //   message: 'success',
-    //   data: token
-    // });
+    const token = jwt.sign({ _id: user._id, email: user.email }, process.env.TOKEN, { expiresIn: '200h', algorithm: 'HS512' });
+    return res.status(200).send({
+      success: true,
+      body: {
+        message: 'user logged in successfully',
+        token,
+        data: user
+      }
+    });
   }
 }
 
