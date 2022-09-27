@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
 import mongoose from 'mongoose';
 import { logger } from '../app.js';
 
