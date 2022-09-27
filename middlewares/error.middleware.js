@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
-import { logger } from '../app.js';
+import logger from '../app.js';
 
 export default (error, req, res) => {
   logger.error(error);
