@@ -2,8 +2,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import express from 'express';
-import noteRoute from './notes.route.js';
-import userRoute from './user.route.js';
+import noteRoute from './notes.routes.js';
+import userRoute from './user.routes.js';
 
 const router = express.Router();
 

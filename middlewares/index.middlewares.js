@@ -3,7 +3,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import router from '../routes/index.route.js';
+import router from '../routes/index.routes.js';
 import database from '../config/database.config.js';
 import errorMiddleware from './error.middleware.js';
 
