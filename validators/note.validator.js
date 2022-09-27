@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
-class ListValidator {
-  createNoteSchema = Joi.object({
+class NoteValidator {
+  createNoteSchema= Joi.object({
     title: Joi.string().required(),
     content: Joi.string().required()
   });
@@ -16,4 +16,4 @@ class ListValidator {
      id: Joi.string().required()
   });
 }
-export default new ListValidator();
+export default new NoteValidator();
