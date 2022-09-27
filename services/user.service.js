@@ -4,12 +4,8 @@ import { User } from '../models/user.model.js';
 
 class UserService {
   async create(data) {
-    // try {
     const newUser = await User.create(data);
     return newUser;
-    // } catch (error) {
-    //   return error.message;
-    // }
   }
 
   async findByEmail(data) {
