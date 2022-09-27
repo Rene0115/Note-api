@@ -5,11 +5,10 @@
 import _ from 'lodash';
 import bcrypt from 'bcrypt';
 import userService from '../services/user.service.js';
-import logger from '../app.js';
 
 class UserController {
   async create(req, res) {
-    const user = userService.findByEmail(req.body.email);
+    const user = await userService.findByEmail(req.body);
 
     if (!_.isEmpty(user)) {
       return res.status(409).send({
@@ -17,14 +16,14 @@ class UserController {
         message: 'User already exists'
       });
     }
-    const saltRounds = 10;
-    const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
-    const data = { email: req.body.email, password: hashPassword };
+
+    const data = { email: req.body.email, password: bcrypt.hashSync(req.body.password, 8) };
+    if (_.isEmpty(data.email || data.password)) {
+      return res.status(404).send({
+        message: 'email and password are required'
+      });
+    }
     const newUser = await userService.create(data);
-
-    logger.info('User...', newUser);
-
-    // const token = 'tokens';
 
     return res.status(201).send({
       success: true,
@@ -34,7 +33,13 @@ class UserController {
   }
 
   async login(req, res) {
-    const user = userService.findByEmail(req.body);
+    const user = await userService.findByEmail(req.body);
+    if (_.isEmpty(user)) {
+      return res.status(404).send({
+        message: 'User not found'
+      });
+    }
+    console.log(req.body.password, user.password);
     const verifyPassword = bcrypt.compareSync(req.body.password, user.password);
     if (!verifyPassword) {
       return res.status(404).send({
@@ -44,13 +49,13 @@ class UserController {
     }
 
     // generate auth token
-    const token = 'token';
+    // const token = 'token';
 
-    return res.header('token', token).status(200).send({
-      success: true,
-      message: 'success',
-      data: token
-    });
+    // return res.header('token', token).status(200).send({
+    //   success: true,
+    //   message: 'success',
+    //   data: token
+    // });
   }
 }
 

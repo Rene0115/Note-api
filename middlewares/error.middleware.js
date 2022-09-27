@@ -1,11 +1,12 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
-import logger from '../app.js';
+/* eslint-disable no-unused-vars */
+import pino from 'pino';
 
-export default (error, req, res) => {
-  logger.error(error);
-  return res.status(500).send({
-    success: false,
-    message: error.message
-  });
+const logger = pino();
+
+const errorHandler = (err, req, res, next) => {
+  logger.error(err);
+
+  return res.status(500).send({ success: false, message: err.message });
 };
+
+export default errorHandler;
